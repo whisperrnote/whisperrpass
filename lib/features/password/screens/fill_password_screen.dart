@@ -1,11 +1,10 @@
+import 'package:flutter/material.dart';
 
+class FillPasswordScreen extends StatelessWidget {
+  const FillPasswordScreen({Key? key}) : super(key: key);
 
-
-
-
-
-
-
-
-
-}  }    );      child: Text('Fill Password Screen'),    return const Center(  Widget build(BuildContext context) {  @overrideclass FillPasswordScreen extends StatelessWidget {import 'package:flutter/material.dart';
+  @override
+  Widget build(BuildContext context) {
+    return const Center(child: Text('Fill Password Screen'));
+  }
+}
