@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SecureStorageService {
@@ -7,7 +8,9 @@ class SecureStorageService {
     try {
       return await _storage.read(key: key);
     } catch (e) {
-      print("Error reading from secure storage: $e");
+      if (kDebugMode) {
+        print("Error reading from secure storage: $e");
+      }
       return null;
     }
   }
@@ -16,7 +19,9 @@ class SecureStorageService {
     try {
       await _storage.write(key: key, value: value);
     } catch (e) {
-      print("Error writing to secure storage: $e");
+      if (kDebugMode) {
+        print("Error writing to secure storage: $e");
+      }
     }
   }
 
@@ -24,7 +29,9 @@ class SecureStorageService {
     try {
       await _storage.delete(key: key);
     } catch (e) {
-      print("Error deleting from secure storage: $e");
+      if (kDebugMode) {
+        print("Error deleting from secure storage: $e");
+      }
     }
   }
 }

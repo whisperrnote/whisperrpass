@@ -6,10 +6,10 @@ class PasswordListItem extends StatelessWidget {
   final VoidCallback onDelete;
 
   const PasswordListItem({
-    Key? key,
+    super.key,
     required this.password,
     required this.onDelete,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

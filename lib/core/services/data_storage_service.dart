@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:convert';
+import 'package:encrypt/encrypt.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:whisperrpass/core/services/encryption_service.dart';
 

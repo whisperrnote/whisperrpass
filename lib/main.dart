@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -16,6 +17,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,6 +34,8 @@ class MyApp extends StatelessWidget {
 }
 
 class AppLifecycleManager extends StatefulWidget {
+  const AppLifecycleManager({super.key});
+
   @override
   _AppLifecycleManagerState createState() => _AppLifecycleManagerState();
 }
@@ -63,13 +68,17 @@ class _AppLifecycleManagerState extends State<AppLifecycleManager>
 
     if (!dataExists) {
       // Initialize default data or show onboarding screen
-      print("Data file does not exist. Initializing...");
+      if (kDebugMode) {
+        print("Data file does not exist. Initializing...");
+      }
       // You might want to navigate to an onboarding screen here
     } else {
       // Load data from file
       final data = await dataStorageService.readEncryptedData();
       // Populate passwordService with loaded data
-      print("Data loaded: $data");
+      if (kDebugMode) {
+        print("Data loaded: $data");
+      }
     }
   }
 
@@ -125,6 +134,8 @@ class _AppLifecycleManagerState extends State<AppLifecycleManager>
 }
 
 class MainScreen extends HookWidget {
+  const MainScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final selectedIndex = useState(0);

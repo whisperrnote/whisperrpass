@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class GeneratePasswordScreen extends StatelessWidget {
-  const GeneratePasswordScreen({Key? key}) : super(key: key);
+  const GeneratePasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

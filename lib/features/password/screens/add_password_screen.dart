@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../core/models/password.dart';
 
 class AddPasswordScreen extends StatefulWidget {
+  const AddPasswordScreen({super.key});
+
   @override
   _AddPasswordScreenState createState() => _AddPasswordScreenState();
 }

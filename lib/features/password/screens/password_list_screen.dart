@@ -7,8 +7,7 @@ import 'add_password_screen.dart';
 class PasswordListScreen extends StatefulWidget {
   final PasswordService passwordService;
 
-  const PasswordListScreen({Key? key, required this.passwordService})
-    : super(key: key);
+  const PasswordListScreen({super.key, required this.passwordService});
 
   @override
   _PasswordListScreenState createState() => _PasswordListScreenState();

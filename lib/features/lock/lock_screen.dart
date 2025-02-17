@@ -1,8 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:local_auth/local_auth.dart';
 
 class LockScreen extends StatefulWidget {
+  const LockScreen({super.key});
+
   @override
   _LockScreenState createState() => _LockScreenState();
 }
@@ -41,7 +44,9 @@ class _LockScreenState extends State<LockScreen> {
         _unlockApp();
       }
     } catch (e) {
-      print("Error authenticating with biometrics: $e");
+      if (kDebugMode) {
+        print("Error authenticating with biometrics: $e");
+      }
       // Fallback to password
     }
   }
