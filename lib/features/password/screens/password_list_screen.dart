@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shadow/flutter_shadow.dart'; // Import flutter_shadow
 import '../../../core/models/password.dart';
 import '../../../core/services/password_service.dart';
 import '../widgets/password_list_item.dart';
@@ -88,10 +87,17 @@ class _PasswordListScreenState extends State<PasswordListScreen> {
           ),
         ],
       ),
-      floatingActionButton: Shadow(
-        blurRadius: 20,
-        offset: const Offset(5, 5),
-        color: Colors.black38,
+      floatingActionButton: Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black38,
+              blurRadius: 20,
+              offset: Offset(5, 5),
+            ),
+          ],
+        ),
         child: FloatingActionButton(
           onPressed: () async {
             final result = await Navigator.push(
