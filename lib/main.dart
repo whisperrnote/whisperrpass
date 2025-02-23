@@ -17,24 +17,27 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final passwordService = PasswordService();
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Whisperr Pass',
       theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
-      home: AppLifecycleManager(), // Use AppLifecycleManager
+      home: AppLifecycleManager(passwordService: passwordService),
       routes: {
-        '/lock': (context) => LockScreen(), // Define lock screen route
-        '/password_list': (context) => MainScreen(), // Define main screen route
+        '/lock': (context) => LockScreen(),
+        '/password_list':
+            (context) => MainScreen(passwordService: passwordService),
       },
     );
   }
 }
 
 class AppLifecycleManager extends StatefulWidget {
-  const AppLifecycleManager({super.key});
+  final PasswordService passwordService;
+  const AppLifecycleManager({super.key, required this.passwordService});
 
   @override
   _AppLifecycleManagerState createState() => _AppLifecycleManagerState();
@@ -42,7 +45,6 @@ class AppLifecycleManager extends StatefulWidget {
 
 class _AppLifecycleManagerState extends State<AppLifecycleManager>
     with WidgetsBindingObserver {
-  final passwordService = PasswordService();
   final dataStorageService = DataStorageService();
   Timer? _lockTimer;
   bool _isLocked = false;
@@ -129,12 +131,16 @@ class _AppLifecycleManagerState extends State<AppLifecycleManager>
 
   @override
   Widget build(BuildContext context) {
-    return _isLocked ? LockScreen() : MainScreen();
+    return _isLocked
+        ? LockScreen()
+        : MainScreen(passwordService: widget.passwordService);
   }
 }
 
 class MainScreen extends HookWidget {
-  const MainScreen({super.key});
+  final PasswordService passwordService;
+
+  const MainScreen({super.key, required this.passwordService});
 
   @override
   Widget build(BuildContext context) {
